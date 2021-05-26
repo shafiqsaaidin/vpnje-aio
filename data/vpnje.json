@@ -1,0 +1,32 @@
+{
+    "lastUpdate": "May 24, 2021 at 09:10 BST",
+    "vpnType": {
+        "Wireguard": "wireguard",
+        "Openvpn": "openvpn",
+        "V2ray": "v2ray"
+    },
+    "wireguard": {
+        "startup": true,
+        "config": {
+            "wg01": "/online/vpnje-aio/data/wireguard/wg01.conf",
+            "wg02": "/online/vpnje-aio/data/wireguard/wg02.conf",
+            "wg03": "/online/vpnje-aio/data/wireguard/wg03.conf",
+            "wg04": "/online/vpnje-aio/data/wireguard/wg04.conf"
+        }
+    },
+    "openvpn": {
+        "startup": false,
+        "config": {
+            "maxis": "/online/vpnje-aio/data/openvpn/maxis.ovpn",
+            "digi": "/online/vpnje-aio/data/openvpn/digi.ovpn",
+            "umobile": "/online/vpnje-aio/data/openvpn/umobile.ovpn"
+        }
+    },
+    "v2ray": {
+        "startup": false,
+        "config": {
+            "maxis-vless": "/online/vpnje-aio/data/v2ray/maxis-vless.json",
+            "digi": "/online/vpnje-aio/data/openvpn/digi-vless.json"
+        }
+    }
+}
