@@ -13,4 +13,13 @@ $(document).ready(function() {
             vpnSelect.append($('<option></option>').attr('value', entry).text(key));
         })
     });
+
+    /** 
+        Wireguard settings 
+     **/
+    axios.get('http://localhost:3000/api/settings')
+      .then((res) => {
+          console.log(res.data);
+        //   alert(res.data.date);
+      });
 });
