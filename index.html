@@ -119,6 +119,7 @@
   <!-- Main status -->
   <section class="section is-main-section">
     <div class="tile is-ancestor">
+      <!-- Wireguard status -->
       <div class="tile is-parent">
         <div class="card tile is-child">
           <div class="card-content">
@@ -138,14 +139,34 @@
                 </div>
               </div>
             </div>
+            <hr>
+            <div class="field has-addons has-addons-centered">
+              <p class="control has-icons-left">
+                <span class="select is-rounded">
+                  <select>
+                    <option selected>Wg Config</option>
+                    <option>vpnje-wg01</option>
+                    <option>vpnje-wg02</option>
+                  </select>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="mdi mdi-cog"></i>
+                </span>
+              </p>
+              <p class="control">
+                <button class="button is-rounded is-danger">
+                  <span class="icon is-small">
+                    <i class="mdi mdi-stop"></i>
+                  </span>
+                  <span>Stop</span>
+                </button>
+              </p>
+            </div>
           </div>
-
-          <!-- Card content-->
-          
         </div>
       </div>
 
-      <!-- Openvpn -->
+      <!-- Openvpn status -->
       <div class="tile is-parent">
         <div class="card tile is-child">
           <div class="card-content">
@@ -165,8 +186,30 @@
                 </div>
               </div>
             </div>
+            <hr>
+            <div class="field has-addons has-addons-centered">
+              <p class="control has-icons-left">
+                <span class="select is-rounded">
+                  <select>
+                    <option selected>Ovpn Config</option>
+                    <option>vpnje-ov01</option>
+                    <option>vpnje-ov02</option>
+                  </select>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="mdi mdi-cog"></i>
+                </span>
+              </p>
+              <p class="control">
+                <button class="button is-rounded is-success">
+                  <span class="icon is-small">
+                    <i class="mdi mdi-play"></i>
+                  </span>
+                  <span>Start</span>
+                </button>
+              </p>
+            </div>
           </div>
-          
         </div>
       </div>
 
@@ -190,83 +233,116 @@
                 </div>
               </div>
             </div>
+            <hr>
+            <div class="field has-addons has-addons-centered">
+              <p class="control has-icons-left">
+                <span class="select is-rounded">
+                  <select>
+                    <option selected>V2rayConfig</option>
+                    <option>vpnje-vless</option>
+                    <option>vpnje-trojan</option>
+                  </select>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="mdi mdi-cog"></i>
+                </span>
+              </p>
+              <p class="control">
+                <button class="button is-rounded is-success">
+                  <span class="icon is-small">
+                    <i class="mdi mdi-play"></i>
+                  </span>
+                  <span>Start</span>
+                </button>
+              </p>
+            </div>
           </div>
-          
         </div>
       </div>
     </div>
   </section>
-  <!-- End main status -->
 
-  <!-- Main switch -->
-  <div class="container">
-    <section class="section is-main-section">
-      <form action="">
-        <div class="card">
+  <!-- System info -->
+  <section class="section is-main-section">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <div class="card tile is-child">
           <header class="card-header">
             <p class="card-header-title">
-              <span class="icon"><i class="mdi mdi-ballot-outline default"></i></span>
-              Main Switch
+              <span class="icon"><i class="mdi mdi-information default"></i></span>
+              System Status
             </p>
           </header>
           <div class="card-content">
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">Vpn Type</label>
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-expanded has-icons-left">
-                    <span class="icon is-small is-left"><i class="mdi mdi-lock"></i></span>
-                    <span class="select is-fullwidth">
-                      <select id="selectVpn" name="type"></select>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr>
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">Config</label>
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-expanded has-icons-left">
-                    <span class="icon is-small is-left"><i class="mdi mdi-cogs"></i></span>
-                    <span class="select is-fullwidth">
-                      <select>
-                        <option>Select config</option>
-                        <option>vpnje-ov01</option>
-                        <option>vpnje-ov02</option>
-                        <option>vpnje-ov03</option>
-                      </select>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr>
-            <div class="field is-horizontal">
-              <div class="field-label"><label class="label">Startup</label></div>
-              <div class="field-body">
-                <div class="field">
-                  <label class="switch is-rounded"><input type="checkbox" value="false">
-                    <span class="check"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <hr>
-            <div class="has-text-centered">
-              <button class="button is-medium is-rounded is-danger">Disconnect</button>
+            <div class="table-container">
+              <table class="table is-hoverable is-fullwidth">
+                <tbody>
+                  <tr>
+                    <td>Name</td>
+                    <td>Huawei B618</td>
+                  </tr>
+                  <tr>
+                    <td>Version</td>
+                    <td>Vpnje-AIO V1.0 RC Release</td>
+                  </tr>
+                  <tr>
+                    <td>CPU type</td>
+                    <td>ARMv7</td>
+                  </tr>
+                  <tr>
+                    <td>Uptime</td>
+                    <td>2 days 18:33:14</td>
+                  </tr>
+                  <tr>
+                    <td>Current date/time</td>
+                    <td>Wed 26 May 2021 10:29:30 PM +08</td>
+                  </tr>
+                  <tr>
+                    <td>Memory Usage</td>
+                    <td><progress class="progress is-info" value="45" max="100">45%</progress></td>
+                  </tr>
+                  <tr>
+                    <td>Disk Usage</td>
+                    <td><progress class="progress is-info" value="30" max="100">45%</progress></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </form>
-    </section>
-  </div>
-  <!-- End main switch -->
+      </div>
+      <div class="tile is-parent">
+        <div class="card tile is-child">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon"><i class="mdi mdi-account default"></i></span>
+              Profile
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="is-user-avatar image has-max-width is-aligned-center">
+              <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe">
+            </div>
+            <hr>
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control is-clearfix">
+                <input type="text" readonly value="John Doe" class="input is-static">
+              </div>
+            </div>
+            <hr>
+            <div class="field">
+              <label class="label">E-mail</label>
+              <div class="control is-clearfix">
+                <input type="text" readonly value="user@example.com" class="input is-static">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End system info -->
 </div>
 
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
