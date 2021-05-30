@@ -1,25 +1,43 @@
-$(document).ready(function() {
-    // get vpn type
-    let vpnSelect = $('#selectVpn');
-    vpnSelect.empty();
+const VpnJeApp = {
+  mounted() {
+    axios
+      .get('http://172.16.102.252:3000/api/info')
+      .then(res => {
+        this.hostname = res.data.hostname
+        this.cpu = res.data.cpuType
+        this.uptime = res.data.uptime
+        this.currentDateTime = res.data.currentDateTime
+      })
+  },
+  data() {
+    return {
+      wgisConnect: false,
+      ovisConnect: false,
+      vrisConnect: false,
+      title: 'VPNJE',
+      hostname: '',
+      version: 'V1.0.1 RC Release',
+      cpu: '',
+      uptime: '',
+      currentDateTime: '',
+      memoryUsage: '',
+      diskUsage: ''
+    }
+  },
+  methods: {
+    toggleWireguard() {
+      this.wgisConnect = !this.wgisConnect
+    },
+    toggleOpenvpn() {
+      this.ovisConnect = !this.ovisConnect
+    },
+    toggleV2ray() {
+      this.vrisConnect = !this.vrisConnect
+    }
+  },
+  computed: {
 
-    vpnSelect.append('<option>Choose type</option>');
-    vpnSelect.prop('selectedIndex', 0);
+  }
+}
 
-    const url = self.location.origin + '/data/vpnje.json';
-
-    $.getJSON(url, function(data) {
-        $.each(data.vpnType, function(key, entry) {
-            vpnSelect.append($('<option></option>').attr('value', entry).text(key));
-        })
-    });
-
-    /** 
-        Wireguard settings 
-     **/
-    axios.get('http://localhost:3000/api/settings')
-      .then((res) => {
-          console.log(res.data);
-        //   alert(res.data.date);
-      });
-});
+Vue.createApp(VpnJeApp).mount('#app')
