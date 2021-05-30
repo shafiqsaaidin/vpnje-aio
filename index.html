@@ -48,7 +48,7 @@
   <aside class="aside is-placed-left is-expanded">
     <div class="aside-tools has-background-success">
       <div class="aside-tools-label">
-        <span><b>VPNJE</b> - AIO</span>
+        <span><b>{{ title }}</b> - AIO</span>
       </div>
     </div>
     <div class="menu is-menu-main">
@@ -128,14 +128,23 @@
                 <div class="is-widget-label"><h3 class="subtitle is-spaced">
                   Wireguard
                 </h3>
-                  <h1 class="title has-text-success">
-                    Connected
+                  <h1 
+                    class="title"
+                    :class="[wgisConnect ? 'has-text-success' : 'has-text-danger']"
+                  >
+                    <span v-if="wgisConnect">Connected</span>
+                    <span v-else>Disconnect</span>
                   </h1>
                 </div>
               </div>
               <div class="level-item has-widget-icon">
-                <div class="is-widget-icon"><span class="icon has-text-primary is-large"><i
-                    class="mdi mdi-earth mdi-48px"></i></span>
+                <div class="is-widget-icon">
+                  <span 
+                    class="icon is-large"
+                    :class="[wgisConnect ? 'has-text-primary' : 'has-text-danger']"
+                  >
+                    <i class="mdi mdi-earth mdi-48px"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -154,11 +163,18 @@
                 </span>
               </p>
               <p class="control">
-                <button class="button is-rounded is-danger">
+                <button 
+                  @click="toggleWireguard" 
+                  :class="[wgisConnect ? 'is-danger' : 'is-success']"
+                  class="button is-rounded">
                   <span class="icon is-small">
-                    <i class="mdi mdi-stop"></i>
+                    <i 
+                      class="mdi"
+                      :class="[wgisConnect ? 'mdi-stop' : 'mdi-play']"
+                    ></i>
                   </span>
-                  <span>Stop</span>
+                  <span v-if="wgisConnect">Stop</span>
+                  <span v-else>Start</span>
                 </button>
               </p>
             </div>
@@ -175,14 +191,23 @@
                 <div class="is-widget-label"><h3 class="subtitle is-spaced">
                   Openvpn
                 </h3>
-                  <h1 class="title has-text-danger">
-                    Stopped
+                  <h1 
+                    class="title"
+                    :class="[ovisConnect ? 'has-text-success' : 'has-text-danger']"
+                  >
+                    <span v-if="ovisConnect">Connected</span>
+                    <span v-else>Disconnect</span>
                   </h1>
                 </div>
               </div>
               <div class="level-item has-widget-icon">
-                <div class="is-widget-icon"><span class="icon has-text-danger is-large"><i
-                  class="mdi mdi-earth mdi-48px"></i></span>
+                <div class="is-widget-icon">
+                  <span 
+                    class="icon is-large"
+                    :class="[ovisConnect ? 'has-text-primary' : 'has-text-danger']"
+                  >
+                    <i class="mdi mdi-earth mdi-48px"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -201,11 +226,18 @@
                 </span>
               </p>
               <p class="control">
-                <button class="button is-rounded is-success">
+                <button 
+                  @click="toggleOpenvpn" 
+                  :class="[ovisConnect ? 'is-danger' : 'is-success']"
+                  class="button is-rounded">
                   <span class="icon is-small">
-                    <i class="mdi mdi-play"></i>
+                    <i 
+                      class="mdi"
+                      :class="[ovisConnect ? 'mdi-stop' : 'mdi-play']"
+                    ></i>
                   </span>
-                  <span>Start</span>
+                  <span v-if="ovisConnect">Stop</span>
+                  <span v-else>Start</span>
                 </button>
               </p>
             </div>
@@ -222,14 +254,23 @@
                 <div class="is-widget-label"><h3 class="subtitle is-spaced">
                   V2ray
                 </h3>
-                  <h1 class="title has-text-danger">
-                    Stopped
+                  <h1 
+                    class="title"
+                    :class="[vrisConnect ? 'has-text-success' : 'has-text-danger']"
+                  >
+                    <span v-if="vrisConnect">Connected</span>
+                    <span v-else>Disconnect</span>
                   </h1>
                 </div>
               </div>
               <div class="level-item has-widget-icon">
-                <div class="is-widget-icon"><span class="icon has-text-danger is-large"><i
-                  class="mdi mdi-earth mdi-48px"></i></span>
+                <div class="is-widget-icon">
+                  <span 
+                    class="icon is-large"
+                    :class="[vrisConnect ? 'has-text-primary' : 'has-text-danger']"
+                  >
+                    <i class="mdi mdi-earth mdi-48px"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -248,12 +289,19 @@
                 </span>
               </p>
               <p class="control">
-                <button class="button is-rounded is-success">
-                  <span class="icon is-small">
-                    <i class="mdi mdi-play"></i>
-                  </span>
-                  <span>Start</span>
-                </button>
+                <button 
+                @click="toggleV2ray" 
+                :class="[vrisConnect ? 'is-danger' : 'is-success']"
+                class="button is-rounded">
+                <span class="icon is-small">
+                  <i 
+                    class="mdi"
+                    :class="[vrisConnect ? 'mdi-stop' : 'mdi-play']"
+                  ></i>
+                </span>
+                <span v-if="vrisConnect">Stop</span>
+                <span v-else>Start</span>
+              </button>
               </p>
             </div>
           </div>
@@ -278,24 +326,24 @@
               <table class="table is-hoverable is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>Name</td>
-                    <td>Huawei B618</td>
+                    <td>Hostname</td>
+                    <td>{{ hostname }}</td>
                   </tr>
                   <tr>
                     <td>Version</td>
-                    <td>Vpnje-AIO V1.0 RC Release</td>
+                    <td>{{ version }}</td>
                   </tr>
                   <tr>
                     <td>CPU type</td>
-                    <td>ARMv7</td>
+                    <td>{{ cpu }}</td>
                   </tr>
                   <tr>
                     <td>Uptime</td>
-                    <td>2 days 18:33:14</td>
+                    <td>{{ uptime }}</td>
                   </tr>
                   <tr>
                     <td>Current date/time</td>
-                    <td>Wed 26 May 2021 10:29:30 PM +08</td>
+                    <td>{{ currentDateTime }}</td>
                   </tr>
                   <tr>
                     <td>Memory Usage</td>
@@ -344,8 +392,7 @@
   </section>
   <!-- End system info -->
 </div>
-
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/axios.min.js"></script>
 <script type="text/javascript" src="js/main.min.js"></script>
 <script type="text/javascript" src="js/vpnje.js"></script>
