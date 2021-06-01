@@ -15,13 +15,13 @@ const VpnJeApp = {
       ovisConnect: false,
       vrisConnect: false,
       title: 'VPNJE',
-      hostname: '',
+      hostname: 'N/A',
       version: 'V1.0.1 RC Release',
-      cpu: '',
-      uptime: '',
-      currentDateTime: '',
-      memoryUsage: '',
-      diskUsage: ''
+      cpu: 'N/A',
+      uptime: 'N/A',
+      currentDateTime: 'N/A',
+      memoryUsage: 'N/A',
+      diskUsage: 'N/A'
     }
   },
   methods: {
